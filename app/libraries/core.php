@@ -312,7 +312,8 @@ class Core {
             "course"            => "إدارة الدورات",
             "order"             => "إدارة الطلبات",
             "cat"               => "إدارة أقسام التواصل",
-            "communication"     => "التواصل مع المستخدمين"
+            "communication"     => "التواصل مع المستخدمين",
+            "email"             => "إدارة الايميل"
             );
         if($service_name == 'all' )
             return $data;
@@ -408,6 +409,11 @@ class Core {
                     "add"       => "أضافة",
                     "edit"      => "تعديل",
                     "delete"    => "حذف"
+                    ),
+            "email" => array(
+                    "all"       => "جميع الصلاحيات",
+                    "show"      => "استعراض البيانات",
+                    "send"      => "ارسال"
                     )
             
             );
@@ -532,19 +538,35 @@ class Core {
         $parentPage = $this->CI->pages->getParentThisPage($pageId);
         $result = FALSE;
         if(!is_bool($parentPage)){
-            $path = explode(',', $parentPage);
+            $path = explode(',|,', $parentPage);
             $result["".base_url().""] = "الصفحة الرئيسية";
-            if($isAdmin){
-                $result["".base_url()."admin"] = 'لوحة التحكم';
-                $result["".base_url()."page"] = "إدارة الصفحات";
-                foreach ($path as $value){
-                    $item = unserialize($value);
-                    $result[base_url().'page/show/'.$item->id] = $item->title;
+            if(function_exists("serialize") && function_exists("unserialize")){
+                if($isAdmin){
+                    $result["".base_url()."admin"] = 'لوحة التحكم';
+                    $result["".base_url()."page"] = "إدارة الصفحات";
+                    foreach ($path as $value){
+                        $item = unserialize($value);
+                        $result[base_url().'page/show/'.$item->id] = $item->title;
+                    }
+                }else{
+                    foreach ($path as $value){
+                        $item = unserialize($value);
+                        $result[base_url().'page/view/'.$item->id] = $item->title;
+                    }
                 }
             }else{
-                foreach ($path as $value){
-                    $item = unserialize($value);
-                    $result[base_url().'page/view/'.$item->id] = $item->title;
+                if($isAdmin){
+                    $result["".base_url()."admin"] = 'لوحة التحكم';
+                    $result["".base_url()."page"] = "إدارة الصفحات";
+                    foreach ($path as $value){
+                        $item = explode(':',$value);
+                        $result[base_url().'page/show/'.$item[0]] = $item[1];
+                    }
+                }else{
+                    foreach ($path as $value){
+                        $item = explode(':',$value);
+                        $result[base_url().'page/view/'.$item[0]] = $item[1];
+                    }
                 }
             }
                 

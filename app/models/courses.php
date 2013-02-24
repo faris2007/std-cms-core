@@ -93,8 +93,8 @@ Class courses extends CI_Model{
         }
         
         public function getAvailableCourse($userId){
-            if(!empty($userId) && !is_numeric($userId))
-                $checkUser = "AND course.id = (SELECT course_id FROM `order` where `order`.users_id != '".$userId."')";
+            if(!empty($userId) && is_numeric($userId))
+                $checkUser = "AND course.id NOT IN (SELECT course_id FROM `order` where `order`.users_id = '".$userId."')";
             else
                 $checkUser = "";
             

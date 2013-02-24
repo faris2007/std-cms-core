@@ -3,13 +3,10 @@
         <table class="tbl" style="width:90%;direction:rtl">
             <thead>
                 <tr>
-                    <th colspan="2">الإعدادات</th>
+                    <td colspan="2">الإعدادات العامة</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td colspan="2">الإعدادات العامة</td>
-                </tr>
                 <tr>
                     <td>أسم الموقع</td>
                     <td><input type="text" name="sitename" value="<?=$SITENAME?>" /></td>
@@ -67,9 +64,42 @@
                         </select>
                     </td>
                 </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="tbl" style="width:90%;direction:rtl">
+            <thead>
+                <tr>
+                    <td colspan="2">إعدادات الايميل</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>السيرفر</td>
+                    <td><input type="text" name="hostmail" value="<?=$HOSTMAIL?>" /></td>
+                </tr>
+                <tr>
+                    <td>الأيميل</td>
+                    <td><input type="text" name="namemail" value="<?=$NAMEMAIL?>" /></td>
+                </tr>
+                <tr>
+                    <td>كلمة المرور (تنبيه للحماية لن يتم أظهار كلمة المرور السابق)</td>
+                    <td><input type="password" name="passmail" placeholder="لن يتم تغيير كلمة المرور أذا ترك هذا الحقل فارغ"  /></td>
+                </tr>
+                <tr>
+                    <td>البورت</td>
+                    <td><input type="text" name="portmail" value="<?=$PORTMAIL?>" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="tbl" style="width:90%;direction:rtl">
+            <thead>
                 <tr>
                     <td colspan="2">إعدادات التسجيل</td>
                 </tr>
+            </thead>
+            <tbody>
                 <tr>
                     <td>تفعيل التسجيل</td>
                     <td><input type="radio" name="registerenable"<?=($REGISTERENABLE == 1)?' checked="checked"':''?> value="1" />نعم <input type="radio" name="registerenable"<?=($REGISTERENABLE == 0)?' checked="checked"':''?> value="0" />لا</td>

@@ -61,7 +61,24 @@ class setting extends CI_Controller {
                                 'name'      => "cms_home_page",
                                 'value'     => $this->input->post('homepage',true)
                                 ),
+                            11 => array(
+                                'name'      => "email_server",
+                                'value'     => $this->input->post('hostmail',true)
+                                ),
+                            12 => array(
+                                'name'      => "email_username",
+                                'value'     => $this->input->post('namemail',true)
+                                ),
+                            13 => array(
+                                'name'      => "email_port",
+                                'value'     => $this->input->post('portmail',true)
+                                )
                             );
+                     if(!empty($_POST['passmail']))
+                         $store[14] = array(
+                                    'name'      => "email_password",
+                                    'value'     => $this->input->post('passmail',true)
+                                );
                     foreach ($store as $value)
                         $this->settings->updateSetting($value['name'],array('value'=> $value['value']));
                     $data['CONTENT'] = 'msg';
@@ -88,7 +105,10 @@ class setting extends CI_Controller {
                         'cms_register_enable'   => 'REGISTERENABLE',
                         'cms_register_group'    => 'GROUPREGSITER',
                         'cms_register_active'   => 'REGISTERACTIVE',
-                        'cms_home_page'         => 'HOMEPAGE'
+                        'cms_home_page'         => 'HOMEPAGE',
+                        'email_server'          => 'HOSTMAIL',
+                        'email_username'        => 'NAMEMAIL',
+                        'email_port'            => 'PORTMAIL'
                     );
                     foreach ($setting as $key => $value)
                         if(isset($settings[$key]))

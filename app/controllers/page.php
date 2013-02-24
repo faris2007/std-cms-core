@@ -73,7 +73,7 @@ class page extends CI_Controller{
             }
             $data['FILTER'] = $filter;
             if(!is_null($parent_id))
-                $data['NAV'] = $this->core->getPath($pageId,true);
+                $data['NAV'] = $this->core->getPath($parent_id,true);
             else
                 $data['NAV'] = array(
                     base_url()          => "الصفحة الرئيسية",

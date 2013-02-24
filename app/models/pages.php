@@ -84,6 +84,8 @@ class pages extends CI_Model{
         $this->db->trans_start();
         if(is_numeric($parentId))
             $this->db->where('parent_id', $parentId);
+        else
+            $this->db->where('parent_id IS NULL');
         
         $query = $this->db->get($this->_table);
         $this->db->trans_complete();
@@ -102,10 +104,17 @@ class pages extends CI_Model{
         
         if(is_numeric($pageId) && $pageId > 0){
             $result = $this->getPage($pageId);
-            if($result->parent_id != NULL)
-                return $this->getParentThisPage($result->parent_id).','.serialize($result);
-            else
-                return serialize($result);
+            if(function_exists("serialize") && function_exists("unserialize")){
+                if($result->parent_id != NULL)
+                    return $this->getParentThisPage($result->parent_id).',|,'.serialize($result);
+                else
+                    return serialize($result);
+            }else{
+                if($result->parent_id != NULL)
+                    return $this->getParentThisPage($result->parent_id).',|,'.$result->id.":".$result->title;
+                else
+                    return $result->id.":".$result->title;
+            }
         }
             
     }

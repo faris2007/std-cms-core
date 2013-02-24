@@ -193,12 +193,12 @@ class order extends CI_Controller {
             );
             if(is_null($type) || $orderId == 0)
                 die('خطأ - مشكلة في الرابط');
-            if($type != 'order')
+            if($type != 'order'){
                 $order = $this->orders->getOrder($orderId);
             
-            if(is_bool($order))
-                die('خطأ - عفواً هذا القائمة غير موجود');
-            
+                if(is_bool($order))
+                    die('خطأ - عفواً هذا القائمة غير موجود');
+            }
             if($type == 'order' || $type == 'cancel'){
                 if($type == 'order'){
                     $store = array(
@@ -219,7 +219,7 @@ class order extends CI_Controller {
             }else if($type == 'enable' || $type == 'disable')
                 if($this->core->checkPermissions('order','active','all')){
                     $store = array(
-                        'isHidden' => ($type == 'enable')? 0 : 1
+                        'isAccept' => ($type == 'enable')? 1 : 0
                     );
                 }else
                     die('ليس لديك صلاحية التفعيل');
