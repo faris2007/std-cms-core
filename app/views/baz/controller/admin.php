@@ -41,25 +41,8 @@
                 </a>
             </td>
             <td>
-                <a href="<?=base_url()?>course"><img src="<?=$STYLE_FOLDER?>icon/course.png" alt="إدارة الدورات" /><br />
-                    <span>إدارة الدورات</span>
-                </a>
-            </td>
-            <td>
-                <a href="<?=base_url()?>order"><img src="<?=$STYLE_FOLDER?>icon/order.png" alt="إدارة الطلبات" /><br />
-                    <span>إدارة الطلبات</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="<?=base_url()?>cat"><img src="<?=$STYLE_FOLDER?>icon/cats.png" alt="إدارة واجهة العرض" /><br />
-                    <span>إدارة أقسام التواصل</span>
-                </a>
-            </td>
-            <td>
-                <a href="<?=base_url()?>communication"><img src="<?=$STYLE_FOLDER?>icon/communication.png" alt="إدارة واجهة العرض" /><br />
-                    <span>التواصل مع المستخدمين</span>
+                <a href="<?=base_url()?>email"><img src="<?=$STYLE_FOLDER?>icon/email.png" alt="إدارة الرسائل" /><br />
+                    <span>إدارة الرسائل</span>
                 </a>
             </td>
             <td></td>

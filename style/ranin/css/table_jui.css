@@ -55,6 +55,8 @@
 
 .dataTables_wrapper .ui-toolbar {
 	padding: 5px;
+	background-color:#B266FF;
+    font-size:14px;
 }
 
 .dataTables_paginate {
@@ -255,7 +257,7 @@ table.display tr.even.gradeU {
 
 
 tr.odd {
-	background-color: rgb(228, 255, 226);
+	background-color: #CCCCFF;
 }
 
 tr.even {
@@ -360,7 +362,7 @@ table.display tr.odd.row_selected td {
  */
 /* For the standard odd/even */
 tr.odd td.sorting_1 {
-	background-color: rgb(211, 255, 222);
+	
 }
 
 tr.odd td.sorting_2 {
@@ -372,7 +374,7 @@ tr.odd td.sorting_3 {
 }
 
 tr.even td.sorting_1 {
-	background-color: rgb(234, 255, 242);
+	
 }
 
 tr.even td.sorting_2 {

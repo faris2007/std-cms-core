@@ -15,17 +15,17 @@
         </thead>
         <tbody>
             <?php if(isset($EAMILS)): ?>
-                <?php foreach ($EAMILS as $row): ?>
+                <?php $i=1; foreach ($EAMILS as $row): ?>
                     <tr id="course<?=$row->id?>">
-                        <td><?=$row['sort_id']?></td>
-                        <td><a href="<?=base_url()?>email/view/<?=trim($row['header']->Msgno)?>"><?=$row['header']->subject?></a></td>
+                        <td><?=$i?></td>
+                        <td><a href="<?=base_url()?>email/view/<?=trim($row['header']->Msgno)?>"><?=(empty($row['header']->subject))?"بدون عنوان":$row['header']->subject?></a></td>
                         <td><?=$row['header']->date?></td>
                         <td>
                             <a href="<?=base_url()?>email/send/replay/<?=trim($row['header']->Msgno)?>"><img src="<?=$STYLE_FOLDER?>icon/replay.png" alt="رد" title="رد" /></a>
                             <a href="<?=base_url()?>email/send/forward/<?=trim($row['header']->Msgno)?>"><img src="<?=$STYLE_FOLDER?>icon/forward.png" alt="أعادة توجيه" title="أعادة توجيه" /></a>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php $i++; endforeach; ?>
             <?php endif; ?>
         </tbody>
     </table>

@@ -155,7 +155,7 @@ class slider extends CI_Controller {
                         $data = $this->upload->data();
                         $picUrl = base_url()."uploads/".$data['file_name'];
                     }
-                    $store['picture'] = $picUrl;
+                    $store['picture'] = (isset($picUrl)) ? $picUrl : $sliderInfo[0]->picture ;
                 }
                 $store = array(
                     'slider_name'   => $this->input->post('name',true),

@@ -303,41 +303,51 @@ function action(url,type,id,i){
     }
 }
 
-$(function() {
-	$(document).on('focusin', '.field, textarea', function() {
-		if(this.title==this.value) {
-			this.value = '';
-		}
-	}).on('focusout', '.field, textarea', function(){
-		if(this.value=='') {
-			this.value = this.title;
-		}
-	});
 
-	$('#navigation ul li:first-child').addClass('first');
-	$('.footer-nav ul li:first-child').addClass('first');
-
-	$('#navigation a.nav-btn').click(function(){
-		$(this).closest('#navigation').find('ul').slideToggle()
-		$(this).find('span').toggleClass('active')
-		return false;
-	})
-});
-
+/* Nivo Slider */
 $(window).load(function() {
-	$('.flexslider').flexslider({
-		animation: "slide",
-		controlsContainer: ".slider-holder",
-		slideshowSpeed: 1000,
-		directionNav: false,
-		controlNav: true,
-		animationDuration: 6000,
-		before:function( slider ){
-			$('.img-holder').animate({'bottom' : '-20px'},300)
-		},
 
-		after:function( slider ){
-			$('.img-holder').animate({'bottom' : '0px'},300)
-		}
-	});
+    $('#slider').nivoSlider({directionNavHide:false});
+
 });
+
+$(document).ready(function(){
+
+    /* Fancy Box */
+    $('a.lightbox').fancybox({
+        'titlePosition'	: 'over',
+        'padding'       : 16,
+        'opacity'		: true,
+		'overlayShow'	: false,
+		'transitionIn'	: 'elastic',
+		'transitionOut'	: 'elastic'
+  	});
+   // youtube videos with fancy box
+   $('a.lightbox-video').click(function() {
+
+        $.fancybox( {
+            'titlePosition'	: 'over',
+            'padding'       : 16,
+            'opacity'		: true,
+		    'overlayShow'	: false,
+		    'transitionIn'	: 'elastic',
+		    'transitionOut'	: 'elastic',
+            'href'          : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+            'type'          : 'swf',
+            'swf'           : {'wmode':'transparent','allowfullscreen':'true'}
+
+          });
+            return false;
+    });
+
+    // Fade in/out on hover
+    /*
+    $("ul.folio-list li .thumb img").fadeTo("slow", 0.6);
+    $("ul.folio-list li .thumb img").hover(function(){
+        $(this).fadeTo("slow", 1.0);
+    },function(){
+        $(this).fadeTo("slow", 0.6);
+    });
+    */
+});
+

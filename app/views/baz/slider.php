@@ -1,28 +1,16 @@
 <!-- slider -->
-    <div class="m-slider">
-            <div class="slider-holder">
-                    <span class="slider-shadow"></span>
-                    <span class="slider-b"></span>
-                    <div class="slider flexslider">
-                            <ul class="slides">
-                                <?php if($SLIDERS): ?>
-                                    <?php foreach ($SLIDERS as $row): ?>
-                                        <li>
-                                                <div class="img-holder">
-                                                        <img src="<?=$row->picture?>" alt="<?=$row->slider_name?>" />
-                                                </div>
-                                                <div class="slide-cnt">
-                                                        <h2><?=$row->slider_name?></h2>
-                                                        <div class="box-cnt">
-                                                                <?=$row->desc?>
-                                                        </div>
-                                                        <a href="<?=$row->url?>" class="grey-btn">التفاصيل</a>
-                                                </div>
-                                        </li>   
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </ul>
-                    </div>
+    <div class="slider-wrapper">
+        <?php if($SLIDERS): ?>
+            <div id="slider" class="nivoSlider">
+                <?php foreach ($SLIDERS as $row): ?>
+                    <img src="<?=$row->picture?>" width="383" height="198" alt="<?=$row->slider_name?>" title="#slid<?=$row->id?>"/>
+                <?php endforeach; ?>
             </div>
-    </div>		
-    <!-- end of slider -->
+            <?php foreach ($SLIDERS as $row): ?>
+                <div id="slid<?=$row->id?>" class="nivo-html-caption">
+                    <strong><?=$row->desc?> <a href="<?=$row->url?>">الرابط</a>.
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+<!-- end of slider -->
